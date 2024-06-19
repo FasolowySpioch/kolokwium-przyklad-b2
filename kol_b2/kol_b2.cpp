@@ -1,9 +1,13 @@
-﻿#include <iostream>
+﻿#include "Konto_Bankowe.h"
 
 using namespace std;
 
 int main()
 {
-    cout << "Hello World!\n";
+	Konto_Bankowe kb;
+	Konto_Bankowe::wypisz_aktywne();
+	kb.~Konto_Bankowe();
+	Konto_Bankowe::wypisz_aktywne();
+
 }
 
