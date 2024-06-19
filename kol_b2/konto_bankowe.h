@@ -11,6 +11,8 @@ private:
 	Aktywnosc aktywnosc;
 	double stan_konta;
 	int numer_konta[26];
+
+	static void licz_aktywne(Konto_Bankowe kb);
 public:
 	Konto_Bankowe();
 	Konto_Bankowe(Klient k, Aktywnosc a, double sk, int* nk);
@@ -28,6 +30,7 @@ public:
 	void set_numer_konta(int* nk);
 
 	static void wypisz_aktywne();
-	static void licz_aktywne(Konto_Bankowe kb);
+
+	virtual void prognoza_za_rok();
 };
 

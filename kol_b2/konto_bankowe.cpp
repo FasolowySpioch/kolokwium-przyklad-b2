@@ -69,3 +69,7 @@ void Konto_Bankowe::licz_aktywne(Konto_Bankowe kb) {
 		if (licznik_aktywnych != 0) licznik_aktywnych--;
 	}
 }
+
+void Konto_Bankowe::prognoza_za_rok() {
+	std::cout << "PROGNOZA STANU KONTA ZA ROK: " << this->stan_konta << std::endl;
+}
