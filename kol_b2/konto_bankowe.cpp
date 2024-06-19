@@ -7,7 +7,7 @@ Konto_Bankowe::Konto_Bankowe() {
 	strcpy_s(this->klient.nazwisko, "Nowak");
 	this->aktywnosc = Aktywnosc::nieaktywny;
 	this->stan_konta = 0.0;
-	for (int i = 0; i < 26; i++) { this->numer_konta[i] = 0; }
+	for (int i = 0; i < 26; i++) { this->numer_konta[i] = 1; }
 
 	licz_aktywne(*this);
 }
@@ -72,4 +72,38 @@ void Konto_Bankowe::licz_aktywne(Konto_Bankowe kb) {
 
 void Konto_Bankowe::prognoza_za_rok() {
 	std::cout << "PROGNOZA STANU KONTA ZA ROK: " << this->stan_konta << std::endl;
+}
+
+Konto_Bankowe Konto_Bankowe::fromKlient(Klient k) {
+	srand(12);
+	int nk[26];
+	for (int i = 0; i < 26; i++) {
+		nk[i] = rand() % 10;
+	}
+	return Konto_Bankowe(k, Aktywnosc::aktywny, 0.0, nk);
+}
+
+Konto_Bankowe::operator double() {
+	return abs(stan_konta);
+}
+
+Konto_Bankowe& Konto_Bankowe::operator+=(double dodac) {
+	this->stan_konta += dodac;
+	return *this;
+}
+
+std::ostream& operator<<(std::ostream& s, const Konto_Bankowe& kb)
+{
+	
+	if (kb.aktywnosc == Aktywnosc::aktywny) {
+		s << "[";
+		for (int i = 0; i < 26; i++) { s << kb.numer_konta[i]; }
+		s << "]" << "[" << kb.klient.imie << " " << kb.klient.nazwisko << "] : " << "[" << kb.stan_konta << "]";
+	}
+	else {
+		s << "[";
+		for (int i = 0; i < 26; i++) { s << kb.numer_konta[i]; }
+		s << "]" << " NIEAKTYWNE";
+	}
+	return s;
 }

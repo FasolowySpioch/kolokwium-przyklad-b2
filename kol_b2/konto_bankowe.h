@@ -3,6 +3,7 @@
 #include <cstring>
 #include <iostream>
 
+
 class Konto_Bankowe{
 private: 
 	static int licznik_aktywnych;
@@ -32,5 +33,11 @@ public:
 	static void wypisz_aktywne();
 
 	virtual void prognoza_za_rok();
-};
 
+	static Konto_Bankowe fromKlient(Klient k);
+	operator double();
+
+	Konto_Bankowe& operator+=(double dodac);
+
+	friend std::ostream& operator<<(std::ostream&, const Konto_Bankowe& kb);
+};
