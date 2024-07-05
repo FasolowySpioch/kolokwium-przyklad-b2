@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #ifdef przykladowe_kol //PAMIETAJ ŻE MASZ ODCZYTAĆ AB I POTEM SZUKAĆ PO PLIKU KONKRETNEJ RZECZY!
 #include <bitset>
 #include <cstdio>
