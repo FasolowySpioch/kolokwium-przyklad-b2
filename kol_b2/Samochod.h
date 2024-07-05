@@ -21,5 +21,9 @@ public:
 	void set_dop(Dopuszczenie d);
 	void set_wlasciciel(Wlasciciel w);
 
+	Num_rej get_rej();
+	int get_licznik();
+	Dopuszczenie get_dop();
+	Wlasciciel get_wlasciciel();
 };
 

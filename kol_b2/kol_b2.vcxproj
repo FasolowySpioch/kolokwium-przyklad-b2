@@ -127,12 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Class.cpp" />
     <ClCompile Include="kol_b2.cpp" />
     <ClCompile Include="Konto_Bankowe.cpp" />
     <ClCompile Include="Konto_Oszczednosciowe.cpp" />
     <ClCompile Include="Samochod.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Class.h" />
     <ClInclude Include="klient.h" />
     <ClInclude Include="Konto_Bankowe.h" />
     <ClInclude Include="Konto_Oszczednosciowe.h" />
