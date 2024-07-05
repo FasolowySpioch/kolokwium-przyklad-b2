@@ -55,3 +55,8 @@ void Samochod::przypisanie_ost(Samochod s) {
 double Samochod::zasieg() {
 	return 800.0;
 }
+
+double Samochod::war_sam(Samochod s, double war_p) {
+	if (war_p < 400) war_p = 400;
+	if (s.dopuszczenie == Dopuszczenie::dop) { return (war_p - (0.1 * licznik)) * 1.0; }
+}
