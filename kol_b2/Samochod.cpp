@@ -23,8 +23,14 @@ void Samochod::set_rejestracja(int* tab) {
 	for (int i = 0; i < 5; i++) {
 		this->rejestracja.Y[i] = tab[i];
 	}
+
+	przypisanie_ost(*this);
 }
-void Samochod::set_licznik(int l) { this->licznik = l; }
+void Samochod::set_licznik(int l) { 
+	if (l < 0) { this->licznik = 0; }
+	if (l > 360000) this->licznik = 360000;
+	else this->licznik = l;
+}
 void Samochod::set_dop(Dopuszczenie d) { this->dopuszczenie = d; }
 void Samochod::set_wlasciciel(Wlasciciel w) { this->wlasciciel = w; }
 
