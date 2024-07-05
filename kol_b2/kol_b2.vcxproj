@@ -130,11 +130,14 @@
     <ClCompile Include="kol_b2.cpp" />
     <ClCompile Include="Konto_Bankowe.cpp" />
     <ClCompile Include="Konto_Oszczednosciowe.cpp" />
+    <ClCompile Include="Samochod.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="klient.h" />
     <ClInclude Include="Konto_Bankowe.h" />
     <ClInclude Include="Konto_Oszczednosciowe.h" />
+    <ClInclude Include="numer_rejestracyjny.h" />
+    <ClInclude Include="Samochod.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
