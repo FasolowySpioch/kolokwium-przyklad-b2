@@ -11,7 +11,7 @@ public:
 	~Samochod_Elektryczny();
 
 	double get_bateria();
-	void set_bateria();
+	void set_bateria(double b);
 
 	double zasieg() override;
 };
