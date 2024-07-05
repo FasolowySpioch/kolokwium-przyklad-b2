@@ -12,3 +12,4 @@ void Samochod_Elektryczny::set_bateria(double b) {
 double Samochod_Elektryczny::zasieg() {
 	return 2.5 * stan_baterii;
 }
+

@@ -30,5 +30,10 @@ public:
 	Wlasciciel get_wlasciciel();
 
 	virtual double zasieg();
+
+	double war_sam(Samochod s, double war_p);
+
+	bool operator==(const Samochod& s) const;
+	bool operator!=(const Samochod& s) const;
 };
 

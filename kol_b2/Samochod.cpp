@@ -59,4 +59,13 @@ double Samochod::zasieg() {
 double Samochod::war_sam(Samochod s, double war_p) {
 	if (war_p < 400) war_p = 400;
 	if (s.dopuszczenie == Dopuszczenie::dop) { return (war_p - (0.1 * licznik)) * 1.0; }
+	else{return (war_p - (0.1 * licznik)) * 0.2;}
 }
+
+bool Samochod::operator==(const Samochod& s) const {
+	if (strcmp(rejestracja.X, s.rejestracja.X) && licznik - s.licznik <= 10 || licznik - s.licznik >=  ( - 10)) { return true; }
+	else { return false; }
+}
+bool Samochod::operator!=(const Samochod& s) const {
+	return !(*this == s);
+}	
