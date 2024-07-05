@@ -28,5 +28,7 @@ public:
 	int get_licznik();
 	Dopuszczenie get_dop();
 	Wlasciciel get_wlasciciel();
+
+	virtual double zasieg();
 };
 

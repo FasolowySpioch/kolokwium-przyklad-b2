@@ -28,8 +28,8 @@ void Samochod::set_rejestracja(int* tab) {
 }
 void Samochod::set_licznik(int l) { 
 	if (l < 0) { this->licznik = 0; }
-	if (l > 360000) this->licznik = 360000;
-	else this->licznik = l;
+	if (l > 360000) { this->licznik = 360000; }
+	else { this->licznik = l; }
 }
 void Samochod::set_dop(Dopuszczenie d) { this->dopuszczenie = d; }
 void Samochod::set_wlasciciel(Wlasciciel w) { this->wlasciciel = w; }
@@ -50,4 +50,8 @@ void Samochod::przypisanie_ost(Samochod s) {
 			ostatni.Y[i]++;
 		}
 	}
+}
+
+double Samochod::zasieg() {
+	return 800.0;
 }
