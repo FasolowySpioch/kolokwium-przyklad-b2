@@ -1,0 +1,98 @@
+#ifdef przykladowe_kol //PAMIETAJ ŻE MASZ ODCZYTAĆ AB I POTEM SZUKAĆ PO PLIKU KONKRETNEJ RZECZY!
+#include <bitset>
+#include <cstdio>
+
+short* allocate_new_tab(uint16_t tab_size) {
+	short* new_tab = new(std::nothrow) short[tab_size + 1];
+	if (new_tab != nullptr) {
+		static short counter = 0;
+		counter++;
+		for (int i = 0; i < tab_size+1; i++) { new_tab[i] = 0; }
+		new_tab[0] = tab_size;
+		new_tab[0] = new_tab[0] << 8;
+		new_tab[0] += counter;
+		//cerr << "Skombinowane dane: " << bitset<16>(new_tab[0]) << endl;
+		return new_tab + 1;
+	}
+	cerr << "ALOKACJA NIEUDANA!" << endl;
+	return nullptr;
+}
+
+short get_counter(short* tab) {
+	if (tab != nullptr) {
+		int counter;
+		uint16_t kombinant = tab[0];
+		uint16_t counter_mask = 0x00FF;
+		uint16_t tCounter = kombinant & counter_mask;
+		counter = (short)tCounter;
+		//cerr << tCounter;
+		return counter;
+	}
+	return NULL;
+}
+int get_size(short* tab) {
+	if (tab != nullptr) {
+		uint16_t kombinant = tab[0];
+		uint16_t size_mask = 0xFF00;
+		uint16_t tSize = kombinant & size_mask;
+		tSize >>= 8;
+		return (int)tSize;
+	}
+	return NULL;
+}
+
+void save_to_file(char name[], short* tab, uint16_t tab_size) {
+	FILE* file = nullptr;
+	file = fopen(name, "wb"); //tu na kolosie będzie ab
+	//rewind(file);
+	if (tab != nullptr) {
+		fwrite(tab-1, sizeof(short), tab_size+1, file);
+	}
+	fclose(file);
+}
+
+
+void abort_tab(short* tab) {
+	if (tab != nullptr) {
+		delete[]  (tab - 1);
+		tab = nullptr;
+	}
+}
+
+void read_from_file(char name[], uint16_t tab_size) {
+	FILE* file = nullptr;
+	file = fopen(name, "rb");
+	short* pomocniczy = new short[tab_size + 1];
+	rewind(file);
+	fread(pomocniczy, sizeof(short), tab_size + 1, file);
+	short counter = get_counter(pomocniczy);
+	int size = get_size(pomocniczy);
+	cout << "\nCOUNTER: " << counter << endl;
+	cout << "SIZE:\t " << size << endl;
+	for (int i = 1; i < tab_size + 1; i++) {
+		cout << "[" << i << "]:\t " << pomocniczy[i] << endl;
+	}
+	fclose(file);
+	abort_tab(pomocniczy+1);
+}
+
+int main() 
+{
+	uint16_t s = 3;
+	char nazwa[] = "plik_table_save.txt";
+	short* table = allocate_new_tab(s);
+	save_to_file(nazwa, table, s);
+	read_from_file(nazwa, s);
+	short* table2 = allocate_new_tab(4);
+	save_to_file(nazwa, table2, 4);
+	read_from_file(nazwa, 4);
+	short* table3 = allocate_new_tab(12);
+	save_to_file(nazwa, table3, 12);
+	read_from_file(nazwa, 12);
+
+	abort_tab(table);
+	abort_tab(table2);
+	abort_tab(table3);
+
+}
+#endif
